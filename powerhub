@@ -608,6 +608,33 @@ else
    _G.AutoMixer = false
 end
 end)
+DrinkingSection:NewToggle("Auto Respawn","Respawn Character",function(state)
+    if state then
+    getgenv().AutoRespawn = true
+       
+        while getgenv().AutoRespawn do
+        wait(0.5)
+          pcall(function()
+        if not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible then return end;
+        wait(3);
+        firesignal(game.Players.LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click);
+        repeat wait() until not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible;
+        wait(3);
+        repeat
+            wait(0.1);
+        until game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible;
+    end)
+        end
+        
+    
+    else
+        getgenv().AutoRespawn = false
+    end
+    end)
+
+
+
+
 
 ----------------------------------- Sam
 SamSection:NewButton("Collect all compass's", "Collects all compass's", function()
